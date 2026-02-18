@@ -1,0 +1,21 @@
+# Path setup
+export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
+
+# Fix Ghostty terminal errors for htop/etc on Linux
+if [[ "$TERM" == "xterm-ghostty" ]]; then
+    export TERM=xterm-256color
+fi
+
+# Starship Prompt
+if command -v starship &> /dev/null; then
+    eval "$(starship init bash)"
+fi
+
+# Aliases
+alias k=kubectl
+alias gs="git status"
+{{ if eq .osid "darwin" -}}
+alias ls="ls -G"
+{{ else -}}
+alias ls="ls --color=auto"
+{{ end -}}

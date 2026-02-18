@@ -1,0 +1,13 @@
+#!/bin/bash
+
+NVIM_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+
+# Only manage the configuration files. 
+# We leave plugin/parser installation to be handled manually inside Neovim.
+if [ ! -d "$NVIM_CONFIG" ]; then
+    echo "Cloning neovim configuration..."
+    git clone https://github.com/yuriy-kovalchuk/nvim.git "$NVIM_CONFIG"
+else
+    echo "Updating neovim configuration..."
+    cd "$NVIM_CONFIG" && git pull
+fi

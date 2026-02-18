@@ -1,0 +1,16 @@
+# Path setup
+export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
+
+# Starship Prompt
+if command -v starship &> /dev/null; then
+    eval "$(starship init zsh)"
+fi
+
+# Aliases
+alias k=kubectl
+alias gs="git status"
+{{ if eq .osid "darwin" -}}
+alias ls="ls -G"
+{{ else -}}
+alias ls="ls --color=auto"
+{{ end -}}
